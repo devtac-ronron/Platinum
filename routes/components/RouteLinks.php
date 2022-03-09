@@ -10,3 +10,7 @@ Route::get('/dashboard', function () {
 Route::get('/users', function () {
     return view('components.home');
 });
+
+Route::get('/platinum', function () {
+    return view('components.home');
+});

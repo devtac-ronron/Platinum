@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImportFilesTable extends Migration
+class CreatePlatinumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateImportFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('import_files', function (Blueprint $table) {
+        Schema::create('platinums', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('filename');
-            $table->string('tmp');
-            $table->string('ext');
-            $table->string('path');
+            $table->string('title');
+            $table->string('code');
+            $table->string('song_by');
+            $table->string('status');
             $table->dateTime('created_at')->nullable();
             $table->uuid('created_by')->nullable();
             $table->dateTime('updated_at')->nullable();
@@ -37,6 +37,6 @@ class CreateImportFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('import_files');
+        Schema::dropIfExists('platinums');
     }
 }

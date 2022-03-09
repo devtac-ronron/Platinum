@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(function () {
+                    require base_path('routes/RESTAPI/ImportFiles/api.php');
                     require base_path('routes/RESTAPI/Users/api.php');
                     require base_path('routes/RESTAPI/Auth/api.php');
                 });

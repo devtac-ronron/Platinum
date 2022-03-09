@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class BaseRepository implements RepositoryInterface
 {
-    protected $model = '';
+    protected $model;
 
     protected $objectClass;
 

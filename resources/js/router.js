@@ -15,6 +15,12 @@ const routes = [
         name: "User",
         component: require("./components/Modules/User/UserComponent.vue")
             .default
+    },
+    {
+        path: "/platinum",
+        name: "Platinum",
+        component: require("./components/Modules/Platinum/PlatinumComponent.vue")
+            .default
     }
 ];
 

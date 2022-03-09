@@ -14,3 +14,7 @@ Route::get('/users', function () {
 Route::get('/platinum', function () {
     return view('components.home');
 });
+
+Route::get('/import-files', function () {
+    return view('components.home');
+});

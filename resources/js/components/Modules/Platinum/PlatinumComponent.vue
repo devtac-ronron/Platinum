@@ -1,48 +1,52 @@
 <template>
-    <div>
-        <v-app>
-           <input type="file" name="file" ref="file" placeholder="File" v-on:change="handleFileUpload($event)">
-              <Button btnName="Submit" btnColor="green" v-on:save="importFile" btnMethod="save"> </Button>
-        </v-app>
-    </div>
+  <div>
+   <v-app>
+      <div>
+        <Datatable
+        name="Platinum"
+        :headers="headers"
+        :items="items"
+        model="Platinum"
+        ></Datatable>
+      </div>
+   </v-app>
+  </div>
 </template>
 
 <script>
-import Button from '../../Fields/Button/Button.vue';
-export default {
-    data() {
-        return {
-            file:'',
-            formData: new FormData()
-        }
-    },
-    components: {
-        Button
-    },
-    methods: {
-        importFile() {
-            const headers = {
-                headers: { "Content-Type": "multipart/form-data"},
-                };
-            this.$SHOW_LOADING();
-            const requestPath = this.$BASE_URL + '/api/importFiles';
-            axios
-                .post(requestPath, this.formData, headers)
-                .then(response => {
-                    this.$HIDE_LOADING();
-                    this.clearFields();
-                    return response.data;
-                })
-                .catch(err => {
-                    this.$HIDE_LOADING();
-                    return err.message;
-            });
-        },
-        handleFileUpload(event) {
-            this.file = event.target.files[0];
-            this.formData.append('file', this.file);
-        }
-    }
-}
-</script>
 
+import Textbox from '../../Fields/Textbox/Textbox.vue';
+import Button from '../../Fields/Button/Button.vue';
+import Datatable from '../../Fields/Datatable/Datatable.vue';
+export default {
+   data() {
+     return {
+       headers: [
+        { text: 'Title', value: 'title' },
+        { text: 'Code', value: 'code' },
+        { text: 'By', value: 'song_by' },
+        { text: 'Status', value: 'status', sortable: false },
+      ],
+      items:[]
+     }
+   },
+  components:{
+     Textbox,
+     Button,
+     Datatable
+  },
+  methods:{
+    onSave() {
+    //    this.createRecord(this.formData, '/api/users/store');
+    },
+  },
+
+  async created() {
+    const resData = await this.getAllRecords('/api/platinum');
+    this.items = resData;
+
+    console.log(resData);
+  },
+}
+
+</script>

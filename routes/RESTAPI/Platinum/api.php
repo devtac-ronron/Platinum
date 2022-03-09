@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Modules\PlatinumController;
 use Routes\BaseRoute;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Modules\ImportFileController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,5 +13,4 @@ use App\Http\Controllers\Modules\ImportFileController;
 |
 */
 
-Route::post('/importFiles', [ImportFileController::class, 'importFiles'])->name('importFiles');
-
+BaseRoute::CRUD(PlatinumController::class, 'platinum');

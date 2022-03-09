@@ -57,6 +57,14 @@
               </p>
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link to="/import-files" class="nav-link fontStyle">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Import Files
+              </p>
+            </router-link>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

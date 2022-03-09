@@ -21,6 +21,12 @@ const routes = [
         name: "Platinum",
         component: require("./components/Modules/Platinum/PlatinumComponent.vue")
             .default
+    },
+    {
+        path: "/import-files",
+        name: "Import Files",
+        component: require("./components/Modules/ImportFiles/ImportFilesComponent.vue")
+            .default
     }
 ];
 

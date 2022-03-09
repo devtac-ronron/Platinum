@@ -1,32 +1,21 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Imports;
 
 use App\Models\Platinum;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ImportFilesRepository implements ToModel, WithHeadingRow
+class PlatinumImport implements ToModel, WithHeadingRow
 {
-    const MODEL_BASE_PATH = 'App\\Models\\';
-
-    protected $model;
-
-    protected $objectClass;
-
-    protected $dataRow;
-
-    protected $row;
-
-    public function __construct()
-    {
-        $modelName = self::MODEL_BASE_PATH . $this->objectClass;
-        $this->model = $modelName;
-    }
-
+    /**
+    * @param array $row
+    *
+    * @return \Illuminate\Database\Eloquent\Model|null
+    */
     public function model(array $row)
     {
-        if(!empty($row)) {
+        if(!empty($row) && $row !== null) {
             return new Platinum([
                 'id' => generateGUID(),
                 'title' => $row['title'],
@@ -34,6 +23,8 @@ class ImportFilesRepository implements ToModel, WithHeadingRow
                 'song_by' => $row['song_by'],
                 'status' => $row['status']
             ]);
+        } else {
+            return null;
         }
     }
 }

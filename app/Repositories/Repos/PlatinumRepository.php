@@ -2,17 +2,21 @@
 
 namespace App\Repositories\Repos;
 
-use App\Repositories\ImportFilesRepository;
+use App\Imports\PlatinumImport;
+use App\Repositories\BaseRepository;
 use Maatwebsite\Excel\Facades\Excel;
 
-class PlatinumRepository extends ImportFilesRepository
+class PlatinumRepository extends BaseRepository
 {
-    public $objectClass = 'Platinum';
+    protected $objectClass = 'Platinum';
 
     public function import($file)
     {
-        Excel::import(new ImportFilesRepository, $file['tmp_name']);
-        return redirect('/')->with('success', 'All good!');
-    }
+        $result = Excel::import(new PlatinumImport, $file['tmp_name']);
+        if($result) {
+            return 'Successfully';
+        }
 
+        return null;
+    }
 }

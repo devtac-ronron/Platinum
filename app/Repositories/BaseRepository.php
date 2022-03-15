@@ -51,7 +51,6 @@ class BaseRepository implements RepositoryInterface
     public function showAllRecords()
     {
         $model = $this->model->all();
-
         return $model;
     }
 

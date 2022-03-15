@@ -12,7 +12,6 @@ class Platinum extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'title',
         'code',
         'song_by',
@@ -23,5 +22,9 @@ class Platinum extends Model
         'created_by',
         'updated_by',
         'deleted_by'
+    ];
+
+    protected $casts = [
+        'id' => 'string'
     ];
 }
